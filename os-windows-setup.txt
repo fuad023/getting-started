@@ -1,0 +1,65 @@
+################################ setup taskbar
+
+enable small taskbar buttons
+switch only to show search icon
+turn off news and interests
+disable to show task view button
+unpin all other icons from taskbar
+
+################################ setup settings
+
+setup system
+goto additional power settings and,
+create a high performance power plan w/ never turn off display
+you may choose what the power button do or what closing the lid does
+disable fast start-up
+enable clipboard history
+goto about and rename this pc (DESKTOP-ORQPD0P)
+
+setup devices
+goto typing and enable show text suggestions for hardware keyboard
+
+setup network
+***add a vpn connection
+
+setup personalization
+goto themes tab and set theme to windows light
+from same tab, goto desktop icon settings and set personalized icons
+goto start and disable to show recently opened items
+
+setup apps
+goto startup and disable anything suspicious
+
+setup time & language
+from date & time tab, set time zone
+from language tab, preferred languages to set keyboard layout to english (us)
+
+################################ update the system
+
+connect to the internet
+update the windows
+
+################################ fix wifi
+
+goto network and internet settings
+click adapter options
+goto wifi properties
+click configure
+goto advanced tab
+select antenna diversity
+switch value to main
+hit ok and exit
+
+################################ setup necessary softwares
+
+download and install mozilla firefox
+
+download and install autohotkey
+copy keyboard.ahk script to ~/.config/AutoHotkey/keyboard.ahk
+create a shortcut of the script and
+copy it to "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/" or,
+"/C/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp"
+
+download and install reainmeter and inside dream
+download and install all other necessary softwares
+

@@ -1,0 +1,52 @@
+################################ prerequisites
+
+# investigate c drive to backup any inportant data
+# backup rainmeter skins
+# backup wallpaper
+# backup browser tabs and password
+https://movienestbd.page/
+https://pahe.ink/
+https://1337x.to/
+
+# list necessary and optional softwares
+[necessary]
+AutoHotKey              (https://www.autohotkey.com/)
+DU Meter
+Microsoft Office
+Mozilla Firefox Browser (https://www.firefox.com/en-GB/download/all/desktop-release/win64/en-GB/)
+PotPlayer               (https://potplayer.tv/)
+Revo Uninstaller        (https://www.revouninstaller.com/products/revo-uninstaller-free/)
+TranslucentTB           (Microsoft Store)
+qBittorrent             (https://www.qbittorrent.org/download)
+Windows Terminal        (Microsoft Store)
+WinRAR                  (https://www.win-rar.com)
+
+Codium
+CodeBlocks
+Git
+Google Drive
+
+[optional]
+Avro Keyboar
+Brave Browser
+CrystalDiskMark
+Everything
+Foxit PDF Reader
+Free Download Manager
+IriunWebcam
+iVCam
+MSI Afterburner with RivaTuner Statistics Server
+OBS Studio
+PowerISO
+ProtonVPN
+Rainmeter
+VLC Media Player
+Wallpaper Engine
+XMedia Recode
+
+################################ load the iso
+
+# get the windows iso
+# unarchieve the iso into a fat32 partition/drive naming WINDOWS_ISO
+# boot from file WINDOWS_ISO/efi/boot/bootx64.efi
+

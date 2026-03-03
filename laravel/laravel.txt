@@ -1,0 +1,66 @@
+################################ install node.js
+
+# goto https://nodejs.org/en/download
+# select latest lts version for preferred of using nvm with npm
+# get the script and run it
+
+################################ install php
+
+sudo apt install php
+php --version
+
+################################ install composer
+
+php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
+
+HASH=`curl -sS https://composer.github.io/installer.sig`
+php -r "if (hash_file('sha384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('/tmp/composer-setup.php'); exit(1); }"
+
+# PROCEED ONLY WITH VERIFIED INSTALLER
+
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+php -r "unlink('/tmp/composer-setup.php');"
+composer --version
+
+################################ install laravel
+
+# to prepare php for laravel
+sudo apt install php-mbstring php-curl php-xml php-mysql
+
+composer global require laravel/installer
+echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+laravel --version
+
+################################ setup laravel project [optional]
+
+mkdir -p ~/codes/projects/ && cd ~/codes/projects/
+
+# install and setup mysql; follow mysql.txt > install mysql, setup mysql
+sudo apt install php-mysql
+
+laravel new backend
+# starter kit: none
+# testing framework: phpunit
+# install laravel boost: no
+# database: mysql
+# run migrate: no
+# run npm commands: no
+cd backend/
+
+# link mysql w/ laravel; follow mysql.txt > link mysql w/ laravel
+php artisan migrate
+
+npm install && npm run build
+composer run dev # recommended to use the traditional @php artisan serve
+
+# client @ [http://localhost:5173/]
+# server @ [http://localhost:8000/]
+
+codium .
+# recommended extensions: PHP Intelephense, PHP Formatter - pretty-php
+
+################################ remove laravel [optional]
+
+# follow laravel-uninstall.txt
+

@@ -1,0 +1,25 @@
+################################ prerequisites
+
+list all currently installed apps
+backup necessary notes
+backup necessary sms
+backup wifi passwords
+backup internal storage
+backup wallpapers which are used
+backup custom font name
+backup mx player and its config
+
+################################ set ka-boom
+
+factory reset
+disable system auto update
+disable playstore auto update
+organize home apps, remove bloatware apps
+set system navigation buttons to gesture
+setup email
+install necessary apps
+
+get back backed up internal storage
+setup wallpaper for lock n home screen
+setup font
+

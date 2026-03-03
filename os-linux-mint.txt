@@ -1,0 +1,58 @@
+# help @ https://youtu.be/yUl4aayKUXM
+
+################################ boot to setup
+
+# goto https://linuxmint.com/download.php
+# choose edition (cinnamon)
+# download the iso from any local mirror (bangladesh: xeonbd)
+
+# create a partition named MINT_ISO as fat32 format
+# unarchive the iso in the partition
+# boot from file MINT_ISO/efi/boot/grubx64.efi
+
+################################ choose mint installation options
+
+# DISCONNECT INTERNET [optional]
+# disable flags of any partition with boot/efi
+
+# language: english
+# keyboard layout: english (us)
+# enable installing multimedia codecs
+
+# create disk partitions as follows:
+# 268 MB as efi system partition
+# 4294 MB as swap area, set space same as total ram capacity (4 GB in my case)
+# 34360 MB as ext4 for / (root) mount point (32 GB storage for linux root)
+
+# set bootloader to newly created EFI partition (sda4 in my case)
+# set timezone: dhaka
+
+# Set system information as follows:
+# name: set-name-with-first-letter-as-capital
+# set computer's name
+# set usename and password
+# switch to require password to log in
+
+# after the installation been completed
+# enable flags back of partition with boot/efi
+
+# to restart the system
+sudo systemctl reboot
+
+# follow along with more things @ linux/
+
+################################ delete linux
+
+# to delete efi, swap area and linux partition
+
+# on windows, open terminal as admin
+diskpart
+list disk # identify the correct disk
+select disk [disk_no]
+list partition # identify partitions
+
+# to select a partition and force delete it
+select partition [partition_no]
+delete partition override
+
+

@@ -1,0 +1,105 @@
+################################ install node.js
+
+# goto [https://nodejs.org/en/download]
+# select latest lts version using nvm with npm
+# get the script and run it
+
+################################ install php, composer and laravel installer
+
+# WARNING: it provides latest packages, which may cause incompatibility
+# recommended not to follow this approach
+
+# goto [https://php.new/]
+# select linux
+# get the script and run it
+source ~/.bashrc
+
+################################ install php
+
+sudo apt install php
+# php -v
+# php -m # lists loaded php modules
+
+################################ install composer; follow either #1 or #2
+
+#1 only if you a pro
+# to install composer using php dependency manager
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+composer --version
+
+#2 the hard way
+# to download the installer script
+php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
+
+# to verify the installer
+HASH=`curl -sS https://composer.github.io/installer.sig`
+php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/tmp/composer-setup.php'); } echo PHP_EOL;"
+
+# PROCEED ONLY WITH VERIFIED INSTALLER
+
+# to install composer globally
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+# to remove the installer
+php -r "unlink('/tmp/composer-setup.php');"
+
+composer -v # verify
+
+################################ install laravel
+
+# to check composer usability
+# composer diagnose
+
+# prepare php for laravel; process is given the the following segment
+composer global require laravel/installer
+echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+laravel --version
+
+################################ setup laravel project [optional]; follow either #1 or #2
+
+# rm -rf ~/Codes/projects/backend/
+mkdir -p ~/Codes/projects/ && cd ~/Codes/projects/
+
+#1 traditional approach
+
+# to prepare php for laravel
+# sudo apt install php-curl unzip php-xml php-sqlite3 php-mbstring
+
+composer create-project laravel/laravel backend
+cd backend/
+# may install, setup and link mysql w/ laravel; follow mysql.txt
+# composer check-platform-reqs # checks missing Laravel requirements
+php artisan serve
+# visit http://127.0.0.1:8000/
+
+#2 newer approach
+
+# to prepare php for laravel
+# sudo apt install php-mbstring php-curl php-xml php-mysql
+
+# to setup mysql
+# install and setup mysql; follow mysql.txt > install mysql and setup mysql
+
+laravel new backend
+# starter kit: none
+# testing framework: phpunit
+# install laravel boost: no
+# database: mysql
+# run migrate: no
+# run npm commands: no
+cd backend/
+
+# link mysql w/ laravel; follow mysql.txt > link mysql w/ laravel
+php artisan migrate
+
+npm install && npm run build
+composer run dev # recommended to use the traditional @php artisan serve
+
+# client @ [http://localhost:5173/]
+# server @ [http://localhost:8000/]
+
+################################ remove laravel [optional]
+
+# follow laravel-uninstall.txt
+

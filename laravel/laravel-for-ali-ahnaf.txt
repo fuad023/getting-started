@@ -1,0 +1,49 @@
+################################ prerequisites
+
+# connect git with github using ssh protocol; follow ../git-github.txt
+# install node.js and laravel; follow laravel.txt > install node.js, php, composer, laravel
+# install mysql; follow mysql.txt > install mysql
+# install codium, postman, dbeaver; follow laravel-essentials.txt
+
+################################ get repo from sensei
+
+cd ~/codes/projects/
+git clone git@github.com:fuad023/nagorik-ai.git # git@github.com:ali-ahnaf/cse-3100.git
+cd nagorik-ai/
+git switch development # git switch csr-sample
+codium .
+
+################################ fix miskates @ Dockerfile [optional]
+
+# incorrect
+# echo "DB_DATABASE=${DB_USERNAME}" >> .env
+# echo "DB_DATABASE=${DB_PASSWORD}" >> .env
+
+# correct
+# echo "DB_USERNAME=${DB_USERNAME}" >> .env
+# echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
+
+################################ setup backend
+
+cd server/
+cp .env.example .env
+
+# setup mysql with DB_NAME=attendance_tracker; follow mysql.txt > setup mysql
+# link with mysql server; follow mysql.txt > link mysql w/ laravel
+
+composer install
+# composer update # do NOT run this
+php artisan key:generate
+# php artisan migrate # do NOT run this; we instructed using implement db first approach
+php artisan serve
+# visit http://127.0.0.1:8000
+
+################################ setup frontend
+
+cd client/
+cp .env.example .env
+npm install
+npm audit fix
+npm run dev
+# visit http://127.0.0.1:5173/
+

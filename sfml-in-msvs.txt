@@ -1,0 +1,23 @@
+** Visual C++ 17 (2022) - 64-bit [https://visualstudio.microsoft.com/downloads]
+** SFML 2.6.1                    [https://www.sfml-dev.org/download/sfml/2.6.1]
+** ImGui-1.91.9b                 [https://github.com/ocornut/imgui/releases/tag/v1.91.9b]
+** ImGui-SFML 2.6.1              [https://github.com/SFML/imgui-sfml/releases/tag/v2.6.1l]
+
+[Release/Debug] and [x64]
+    General ->
+	1. Output Directory:         $(SolutionDir)bin\
+	2. Intermediate Directory:   $(SolutionDir)obj\$(PlatformTarget)-$(Configuration)\
+	3. Target Name:              sfmlgame-$(PlatformTarget)-$(Configuration)
+
+    C/C++ ->
+	1. Additional Include Directories: $(MSVS_SFML_DIR)\include\;$(SolutionDir)\src\imgui\;
+	2. Preprocessor Definitions: SFML_STATIC;
+	3. C++ Language Standard:    ISO C++20 Standard (/std:c++20)
+	4. C Language Standard:      ISO C17 (2018) Standard (/std:c17)
+
+    Linker ->
+	1. Additional Library Directories: $(MSVS_SFML_DIR)\lib\;
+	2. Additional Dependencies:
+		[Release] sfml-graphics-s.lib;  sfml-window-s.lib;  sfml-system-s.lib;  opengl32.lib;winmm.lib;freetype.lib;gdi32.lib;
+		[Debug]   sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;winmm.lib;freetype.lib;gdi32.lib;
+

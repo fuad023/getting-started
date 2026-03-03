@@ -1,0 +1,10 @@
+# list of all the packages installed on the system
+apt list --installed
+
+# list of all the packages manually installed on the system
+apt-mark showmanual
+apt list --manual-installed
+
+# search for a specific installed package
+apt list --installed | grep <package_name>
+

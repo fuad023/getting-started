@@ -1,0 +1,59 @@
+################################ get ulauncher
+
+# goto https://ulauncher.io/
+# download the .deb file
+# use the gui installer (.deb file)
+
+# launch ulauncher and goto settings
+# enable launch at login and show all apps
+# relaunch the app
+
+################################ set theme, icon and font
+
+cd ~/Downloads/
+
+# goto https://www.gnome-look.org/p/2131750
+tar -xf Space-transparency.tar.xz -C ~/.themes/
+
+git clone https://github.com/Mibea/Hatter.git
+cp -r Hatter/Hatter ~/.icons/
+cp -r Hatter/Hatter-Blue ~/.icons/
+
+git clone https://github.com/sahibjotsaggu/San-Francisco-Pro-Fonts.git
+cp -r San-Francisco-Pro-Fonts ~/.fonts/
+
+# set icons to hatter blue and, desktop to space transparency
+# also set font from ubuntu regular to sf pro regular
+# and from ubuntu medium to sf pro bold
+
+################################ improvise panel
+
+# move the panel from bottom to top
+# goto panel settings
+# switch auto hide panel from always show panel to intelligently hide panel
+# shrink panel height from 40 to 24
+# shrink right zone coloured icon size from 24px to 16px,
+# and symbolic icon size from 16 to 14
+
+# use custom date format from "%A, %B %e, %H:%M" to "  %a,  %b %-d,  %-I:%M  "
+# remove corner bar and grouped window list
+
+# goto extensions and install transparent panels then enable it
+# maybe set the type of transparency to semi transparent
+
+# goto menu (applet) configure
+# change icon from linuxmint-logo-ring-symbolic to mintmenu-all-applications-symbolic
+
+################################ get the dock
+
+sudo apt install plank
+# put plank on the startup applications and click run now
+
+plank --preferences
+# switch theme to transparent
+# icon size from 48 to 40
+# enable icon zoom
+# clean up the dock icons
+# add icons to the dock: system settings, neno, firefox, terminal
+
+

@@ -1,0 +1,37 @@
+################################ remove keyd
+sudo systemctl disable --now keyd
+sudo systemctl daemon-reload
+
+# sudo make uninstall # execute from source directory, otherwise follow as below 
+sudo rm -rf \
+/usr/local/bin/keyd \
+/usr/local/bin/keyd-application-mapper \
+/usr/local/bin/keyd-usb-gadget.sh \
+/usr/local/share/keyd \
+/usr/local/share/doc/keyd \
+/usr/local/share/man/man1/keyd* \
+/usr/local/lib/systemd/system/keyd.service \
+/usr/local/lib/systemd/system/keyd-usb-gadget.service \
+/usr/local/lib/sysusers.d/keyd.conf
+sudo groupdel keyd
+sudo systemctl daemon-reload
+
+sudo rm -rf /etc/keyd
+sudo rm -f /var/run/keyd.socket
+
+################################ miscellaneous
+
+# helpful commands
+# keyd list-keys        # lists of all available keys (how they are named internally)
+# sudo keyd monitor     # watch keys and ids
+# sudo keyd reload      # reloads config
+# systemctl status keyd # checks keyd status
+# press backspace+escape+enter to safely terminate keyd
+
+# investigate more hotkey combinations
+# selection
+# word navigation
+# Fn-as-layer instead of Alt
+# temporary toggle modes
+# ...
+

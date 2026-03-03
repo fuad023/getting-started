@@ -1,0 +1,46 @@
+################################ install linux
+
+wsl --install --no-distribution # installs wsl on the system
+
+# if it displays any errors
+# goto windows features
+# enable windows subsystem for linux
+# enable virtual machine platform
+# reboot
+
+wsl --list --online             # lists available distros for installation
+wsl --install [distro-name]     # choose Ubuntu
+# set username and password
+
+# to verify
+wsl --status
+wsl --list --verbose
+
+cd ~
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+
+################################ install docker
+
+# install Docker Desktop on windows system
+# launch docker desktop and
+# enable integration with the linux distro
+
+# to verify
+docker --version
+docker compose version
+docker pull hello-world         # tests docker
+docker image ls                 # list docker images stored in local system's repo
+docker ps                       # list all currently running docker containers
+
+################################ clean any previous wsl instances
+
+wsl --list --verbose            # lists all installed distros
+wsl --unregister <Distro>       # destroys a distro
+
+# goto windows features
+# disable windows subsystem for linux
+# disable virtual machine platform
+# reboot
+

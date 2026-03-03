@@ -1,0 +1,23 @@
+################################ rollback to stable kernal version
+
+sudo nano /etc/default/grub
+# edit contents as follows:
+# GRUB_TIMEOUT_STYLE=menu
+# GRUB_TIMEOUT=10
+
+sudo update-grub
+sudo reboot
+
+# select advanced options
+# select an older kernel
+# after the pc boots with older kernel,
+# uninstall the new one
+
+sudo nano /etc/default/grub
+# edit contents as follows:
+# GRUB_TIMEOUT_STYLE=hidden
+# GRUB_TIMEOUT=0
+
+sudo update-grub
+sudo reboot
+

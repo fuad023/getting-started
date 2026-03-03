@@ -1,0 +1,80 @@
+################################ setup sail [optional]
+
+# goto project directory
+composer require laravel/sail --dev
+php artisan sail:install
+# select mysql maybe
+# be patient. it takes a long time.
+
+alias sail='./vendor/bin/sail'
+sail down
+sail up -d # -d is for running the command in the background
+sail artisan migrate
+
+# visit http://127.0.0.1:80/ for laravel
+# visit http://127.0.0.1:3306/ for database
+
+################################ install mysql
+
+sudo apt install mysql-client mysql-server php-mysql
+
+# to secure the server
+# sudo mysql_secure_installation
+# set root password
+# remove anonymous users
+# disallow remote root login
+# remove test database
+
+################################ setup mysql [optional]
+
+# to use cliet to login to the server with root user
+# sudo mysql -u root -p
+# enter mysql root password
+
+# to update any preferred DB_NAME
+DB_NAME=laravel
+
+# recommended to update USERNAME and PASSWORD with preferred ones
+DB_USER=username
+DB_PASS=password
+
+sudo mysql -e "
+CREATE DATABASE ${DB_NAME};
+CREATE USER IF NOT EXISTS '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASS}';
+GRANT ALL PRIVILEGES ON ${DB_NAME}.* to '${DB_USER}'@'localhost';
+FLUSH PRIVILEGES;
+"
+
+# to create an admin user [optional]
+sudo mysql -e "
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+"
+
+################################ link mysql w/ laravel [optional]
+
+nano .env
+# update DB_* variables like so:
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel  # keep the value which is set to DB_NAME previously
+# DB_USERNAME=username # keep the value which is set to DB_USER previously
+# DB_PASSWORD=password # keep the value which is set to DB_PASS previously
+
+# php artisan migrate # DONT migrate from here
+
+################################ remove mysql [optional]
+
+# sudo apt remove mysql-client mysql-server
+
+sudo systemctl stop mysql
+sudo apt purge 'mysql-*'
+sudo rm -rf /var/lib/mysql /var/log/mysql /etc/mysql
+sudo deluser mysql 2>/dev/null || true
+sudo delgroup mysql 2>/dev/null || true
+sudo apt autoremove --purge
+sudo apt autoclean
+sudo debconf-communicate mysql-server <<< "RESET"
+

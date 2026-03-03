@@ -1,0 +1,18 @@
+[ids]
+*
+
+[alt]
+i = up
+j = left
+k = down
+l = right
+
+u = backspace
+o = delete
+
+, = {
+. = }
+
+; = [
+' = ]
+

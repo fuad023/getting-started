@@ -1,0 +1,25 @@
+auto
+disabled
+auto
+auto
+high performance
+11b/g:20Mhz
+auto
+auto
+disabled
+2346
+auto
+802.11b only
+not present
+enabled
+disabled
+100%
+disabled
+best rate
+auto
+auto
+2347
+auto
+auto
+11(20MHz)
+disabled

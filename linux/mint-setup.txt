@@ -1,0 +1,122 @@
+################################ update software and security
+
+# be considerate about new kernel update, as it may break things
+# you may switch to local mirrors on the update manager
+# you may use the gui app, update manager
+# or, go with the terminal
+
+# connect to internet
+sudo apt update
+sudo apt upgrade
+sudo reboot # systemctl reboot
+
+################################ set preferences
+
+# goto date & time settings
+# select correct region and city
+# disable 24h clock
+
+# slide volume bar to 100%
+
+# goto language settings
+# delete unwanted languages
+# set preferred language
+
+# goto account details
+# set a picture
+
+################################ optional ui changes
+
+# change appearance from mixed to dark
+# change colour from dark aqua (3rd from left) to dark orange (4th from right)
+# change mouse pointer from bibata modern classic to bibata modern ice
+
+################################ setup keyboard hotkeys
+
+#1 - ignore this shit
+# sudo add-apt-repository ppa:keyd-team/ppa
+# sudo apt update
+# sudo apt install keyd
+
+#2 - go with this one
+cd ~/Downloads
+sudo apt install git
+git clone https://github.com/rvaiya/keyd
+cd keyd/
+make && sudo make install
+
+sudo systemctl enable --now keyd
+
+# to append contents from keyd-hotkeys to /etc/keyd/default.conf
+sudo tee -a /etc/keyd/default.conf < ~/Downloads/getting-started/linux/keyd/keyd-hotkeys # -a for append
+sudo keyd reload # reloads the config set
+
+################################ setup browser
+
+# open firefox
+# enable option for open previous windows and tabs
+# goto customize toolbar and disable title bar
+# add ublock origin by raymond hill (also enable to run on private windows)
+# goto https://accounts.google.com/ and sign in to an account
+
+# install theme rei ayanami japanese anime by concusseddolphin
+# open new tab, goto customize, and set wallpaper from
+# ~/Downloads/wallpaperflare.com_wallpaper.jpg
+
+################################ setup vpn
+
+# goto [https://account.protonvpn.com/login] and login or create an account
+# goto [https://account.protonvpn.com/downloads] and download any favourite openvpn config file
+# goto [https://account.protonvpn.com/account-password] and acquire openvpn username and password
+
+# goto network settings
+# click add vpn, then select import from file
+# open the downloaded .ovpn file
+# set openvpn username and password acquired earlier
+# click add to get go connecting the vpn from network applet
+
+# [optional]
+# to auto connect to vpn
+# goto network connection
+# select any option from ethernet/wireless connection
+# press edit, select general tab
+# enable auto connect to vpn 
+
+################################ setup firewall
+
+# you may use the gui app, gufw
+# open it and enable the staus
+# or, go with the command lines
+
+sudo ufw status # get the current status of firewall
+sudo ufw enable
+sudo ufw status verbose
+
+# to allow traffic over vpn tunnel only
+# sudo ufw default deny outgoing
+# sudo ufw default deny incoming
+# sudo ufw allow out on tun0 from any to any
+# sudo ufw allow in on tun0 from any to any
+
+################################ setup kde connect [optional]
+
+# DISABLE ANY VPN FROM BOTH DEVICES
+
+sudo apt update
+sudo apt install kdeconnect
+# press enter
+
+# add firewall rules
+sudo ufw allow in proto tcp from 192.168.0.101 to 192.168.0.102 port 1714:1764
+sudo ufw allow in proto udp from 192.168.0.101 to 192.168.0.102 port 1714:1764
+
+# install kde connect on phone
+# launch kde connect on both of the devices
+
+# request pairing from one device
+# accept request from the other
+
+# you may install
+# from actions settings, send with kde connect
+# from applets settings, kde connect applet
+
