@@ -16,7 +16,7 @@ source ~/.bashrc
 ```
 
 ## Uninstall raw PHP and Composer 
-**NOTE:** Ignore if PHP, Composer and Laravel installer weren't from [PHP NEW](https://php.new/).
+**NOTE:** Ignore if PHP, Composer and Laravel installer wasnt from [PHP NEW](https://php.new/).
 
 ```
 # to remove php
