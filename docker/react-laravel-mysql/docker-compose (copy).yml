@@ -1,0 +1,65 @@
+services:
+
+  db:
+    image: mysql
+    container_name: nagorik_db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/schema:/docker-entrypoint-initdb.d/schema
+      - ./database/seed:/docker-entrypoint-initdb.d/seed
+      - ./database/init.sh:/docker-entrypoint-initdb.d/init.sh
+    networks:
+      - nagorik_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build: ./server
+    image: laravel
+    container_name: nagorik_server
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/var/www
+      - /var/www/vendor # prevent host vendor from overwriting container's
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - nagorik_network
+
+  client:
+    build: ./client
+    image: react
+    container_name: nagorik_client
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
+    volumes:
+      - ./client:/app
+      - /app/node_modules # prevent host node_modules from overwriting container's
+    depends_on:
+      - server
+    networks:
+      - nagorik_network
+
+volumes:
+  db_data:
+
+networks:
+  nagorik_network:
+    driver: bridge
