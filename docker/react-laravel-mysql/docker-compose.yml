@@ -1,0 +1,43 @@
+services:
+
+  database:
+    image: mysql:8
+    container_name: mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/milestone-1/schema:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+
+  server:
+    build: ./server
+    image: laravel:12
+    container_name: laravel
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/var/www
+    depends_on:
+      - database
+
+  client:
+    build: ./client
+    image: react:18
+    container_name: react
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+    depends_on:
+      - server
+
+volumes:
+  db_data:

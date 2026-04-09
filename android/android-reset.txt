@@ -1,0 +1,49 @@
+## Prerequisites
+
+- list all currently installed apps
+- backup
+    - necessary notes
+    - necessary sms
+    - wifi passwords
+    - internal storage
+    - font name (dogswan), wallpaper (Apr 4, 2024 | Jun 11, 2025), ringtone
+
+## Initiate ka-boom
+
+factory reset
+
+disable system and apps auto update
+disable playstore auto update
+organize home apps, remove bloatware apps
+set system navigation buttons to gesture
+setup email
+install necessary apps
+
+get back backed up internal storage
+setup wallpaper for lock n home screen
+setup font
+
+################################
+
+bKash
+Brave
+CamScanner
+ChatGPT
+Google Classroom
+Google Meet
+Google Slides
+Kiwi Browser (apk)
+LinkedIn
+Messenger
+MX Player (apk)
+My Airtel
+MyBL
+OpenVPN Connect
+PrayerTimes
+Proton VPN
+Reddit
+Snaptube (apk)
+Tether
+txtpad
+WhatsApp ***backup data
+Zoom

@@ -1,0 +1,40 @@
+################################ build image and start container
+
+docker compose pull database
+docker compose build server
+docker compose build client
+
+# docker compose build
+
+docker compose up database
+docker compose up server
+docker compose up client
+
+# docker compose up
+
+################################ command inside container
+
+docker exec -it mysql mysql -u root -p
+docker exec -it laravel composer --version
+
+################################ deletation
+
+# -a for all, -q for quite (only id)
+
+# docker stop $(docker ps -aq)
+# docker rm $(docker ps -aq) # containers
+# docker rmi $(docker images -aq) # images
+# docker volume rm $(docker volume ls -q) # volumes
+# docker network rm $(docker network ls -q) # networks
+# may fail for default networks (bridge, host, none); that’s normal
+# docker builder prune -a # build cache
+
+# all-in-one
+docker system prune -a --volumes -f
+
+################################ ultimate delete
+
+# menu (at bottom-left, right to pause icon for docker engine)
+# troubleshoot
+# reset to factory defaults
+
