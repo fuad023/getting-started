@@ -1,0 +1,19 @@
+[user]
+	name = set-your-name
+	email = set-your-email
+
+[core]
+	autocrlf = true  # checkout windows-style, commit unix-style line endings
+	safecrlf = warn
+	compression = 9  # trade cpu for network
+	editor = codium --wait
+
+[init]
+	defaultBranch = main
+
+# URL shortcuts
+[url "git@github.com:fuad023/"]
+	insteadOf = "fuad023:"
+
+[url "git@github.com:"]
+	insteadOf = "gh:"

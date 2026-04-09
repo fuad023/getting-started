@@ -1,0 +1,2 @@
+# to list all settings and the file they originated from
+git config --list --show-origin
